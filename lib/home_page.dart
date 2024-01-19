@@ -6,7 +6,7 @@ class TicTacToeScreen extends StatefulWidget {
   const TicTacToeScreen({super.key});
 
   @override
-  _TicTacToeScreenState createState() => _TicTacToeScreenState();
+  State<TicTacToeScreen> createState() => _TicTacToeScreenState();
 }
 
 class _TicTacToeScreenState extends State<TicTacToeScreen> {
@@ -28,17 +28,17 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tic Tac Toe'),
+        title: const Text('Tic Tac Toe'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Play against:',
               style: TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -49,9 +49,9 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
                       resetGame();
                     });
                   },
-                  child: Text('Computer'),
+                  child: const Text('Computer'),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
@@ -59,11 +59,15 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
                       resetGame();
                     });
                   },
-                  child: Text('Player 2'),
+                  child: const Text('Player 2'),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
+            Text((againstComputer == true)
+                ? "Playing against computer"
+                : "Playing with Player 2"),
+            const SizedBox(height: 20),
             for (int i = 0; i < 3; i++)
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -86,7 +90,7 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
                         child: Center(
                           child: Text(
                             board[i][j],
-                            style: TextStyle(fontSize: 24),
+                            style: const TextStyle(fontSize: 24),
                           ),
                         ),
                       ),
@@ -164,14 +168,14 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Game Over'),
+          title: const Text('Game Over'),
           content: Text('$winner wins!'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
